@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/cake.js"></script>
+		<script type="text/javascript" src="js/composite.js"></script>
+		<script type="text/javascript" src="js/scene.js"></script>
+		<script type="text/javascript" src="js/palette.js"></script>
+		<script type="text/javascript" src="js/colors_helper.js"></script>
+		<script type="text/javascript" src="js/effects.js"></script>
+		<script type="text/javascript" src="js/scenes/level4_chap1_scene1.js"></script>
+		<script type="text/javascript" src="js/scenes/level4_chap3_scene4a.js"></script>
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+
+		<script type="text/javascript"
+		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+		<link href='http://fast.fonts.com/cssapi/f4ed6aad-59e9-4c4a-8a74-cbf4ca8cc5fe.css' rel='stylesheet' />
+
+		<style type="text/css">
+			BODY {
+				background-color: #222;
+				direction: rtl;
+				font-family: "Classica W26 Bold", Arial;
+			}
+			
+			#canvas_container {
+				width: 800px;
+				height: 600px;
+				margin: auto;
+				overflow: hidden;
+			}
+
+			.def {
+				text-decoration: underline;
+				color: #333;
+			}
+
+			.color1 { color: #FF4242; }
+			.color2 { color: #1693A5; }
+			.color3 { color: #755D87; }
+		</style>
+	</head>
+	
+	<body>
+		
+		<div id="canvas_container"></div>
+
+
+		<div class="content">
+			<ul>
+				<li id="level4_chap1_scene1">
+					<ul>
+						<li class="c_def">
+							<p style="text-align: center;">
+																פונקציה היא
+<br/>
+								<span class="def color1">כלל התאמה</span>
+								<span class="def color2">מלא</span>
+									ו<span class="def color3">חד-ערכי</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">  
+		    
+		    var container = $("#canvas_container");
+
+			colors = colors_helper.extend({
+				bg: '#EFFFCD',
+				one: '#FF4242',
+				two: '#D4EE5E',
+				three: '#1693A5',
+				dark: '#2E2633'
+			});
+			
+			var d = {
+				"canvas": {					
+					// Keep 4:3 ratio 
+					width: container.width(), 
+					height: container.height(),
+					
+					content_top: 150
+				} 
+			}
+			
+			var xCenter = d.canvas.width / 2,
+				yCenter = d.canvas.height / 2;
+			
+		
+			// Create canvas.
+			var c = E.canvas(d.canvas.width, d.canvas.height)
+			var canvas = new Canvas(c)
+		    canvas.fill = colors_helper.hex_to_rgba(colors.bg_70w);		
+		    container.append(c);
+		    
+		    var scene = new CanvasNode({
+		    	font: 'Arial'
+		    });
+		    canvas.appendChild(scene);
+		    
+			var palette = new Palette(colors, { 
+				width: 80, height: 120, x: 10, y: 230 
+			});
+			scene.append(palette);
+
+			scene.append(new Scene_Level4Chap1Scene1({ "d": d }));
+		    
+		</script>  
+	</body>
+</html>
